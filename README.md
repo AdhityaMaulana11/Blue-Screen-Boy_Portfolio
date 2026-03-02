@@ -11,7 +11,6 @@ Full-Stack Developer & Undergraduate Student at Universitas Kuningan
 ## 🚀 Live Preview
 
 🔗 **Demo:** _(add your deployed link here)_  
-📄 **Download CV:** _(public/CV-Adhitya_Maulana_Wijaya.pdf)_
 
 ---
 
