@@ -187,7 +187,7 @@ src/
 Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/yourrepo.git
+git clone https://github.com/AdhityaMaulana11/Blue-Screen-Boy_Portfolio.git
 cd yourrepo
 ```
 
@@ -241,7 +241,7 @@ Switching mode triggers:
 Edit:
 
 ```plaintext
-src/data/projects.json
+src/data/portfolio.tsx
 ```
 
 Each project object should follow:
@@ -252,10 +252,13 @@ Each project object should follow:
   "title": "",
   "year": "",
   "summary": "",
+  "screenshots": [],
   "tech": [],
   "role": "",
   "duration": "",
-  "logs": []
+  "problem": "",
+  "approach": "",
+  "result": ""
 }
 ```
 
