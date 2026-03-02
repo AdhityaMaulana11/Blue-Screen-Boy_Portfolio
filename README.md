@@ -127,7 +127,9 @@ Each project includes:
 - React (Vite)
 - React Router
 - Tailwind CSS
+- ShadcnUI
 - Framer Motion
+- Zod
 
 ### State Management
 
@@ -169,14 +171,13 @@ GUI Mode represents how I deliver:
 ```plaintext
 src/
  ├── components/
- ├── pages/
- ├── context/
- ├── hooks/
- ├── data/
- │    └── projects.json
- ├── utils/
- │    └── terminalParser.js
- └── App.jsx
+ │    └── ui/
+ │    └── context/
+ │    └── data/
+ │    └── hooks/
+ │    └── lib/
+ │    └── pages/
+ └── App.tsx
 ```
 
 ---
