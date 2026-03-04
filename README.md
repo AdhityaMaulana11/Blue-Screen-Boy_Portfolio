@@ -10,7 +10,7 @@ Full-Stack Developer & Undergraduate Student at Universitas Kuningan
 
 ## 🚀 Live Preview
 
-🔗 **Demo:** _(add your deployed link here)_  
+🔗 **Demo:** _https://blue-screen-boy-portfolio.vercel.app/_  
 
 ---
 
