@@ -142,7 +142,7 @@ export const projects: Project[] = [
     result:
       "Successfully demonstrated a scalable marketplace architecture with production-grade UX for the competition presentation.",
     repo: "https://github.com/AdhityaMaulana11/SolusiKos-Prototype-V1.0.git",
-    live: "https://solusikos-prototype-v1-0.vercel.app/",
+    live: "https://solusi-kos-prototype-v1-0.vercel.app/",
   },
   {
     id: "tasktunes",
