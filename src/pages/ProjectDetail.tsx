@@ -143,7 +143,7 @@ const ProjectDetail = () => {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1 text-primary hover:underline"
                   >
-                    <FolderGit className="w-3.5 h-3.5" /> Repo
+                    <FolderGit className="w-3.5 h-3.5" /> Github Repo
                   </a>
                 )}
               </div>
