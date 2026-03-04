@@ -140,6 +140,7 @@ export const projects: Project[] = [
       "Built a SaaS prototype with Next.js App Router, fully mocked data, 3 interactive dashboards, advanced filtering, dynamic booking, survey scheduling, and role-switching.",
     result:
       "Successfully demonstrated a scalable marketplace architecture with production-grade UX for the competition presentation.",
+    repo: "https://github.com/AdhityaMaulana11/SolusiKos",
   },
   {
     id: "tasktunes",
