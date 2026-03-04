@@ -123,6 +123,7 @@ export const projects: Project[] = [
       "Built a full-stack platform with RESTful API architecture, JWT authentication, and Open Journal Systems (OJS 3) integration. Frontend uses React.js + Tailwind CSS, backend Express.js + Sequelize ORM + MySQL.",
     result:
       "Increased user engagement by 30%, reduced unauthorized access by 50%, and improved journal publishing efficiency by 40%.",
+    repo: "",
   },
   {
     id: "solusikos",
@@ -140,7 +141,7 @@ export const projects: Project[] = [
       "Built a SaaS prototype with Next.js App Router, fully mocked data, 3 interactive dashboards, advanced filtering, dynamic booking, survey scheduling, and role-switching.",
     result:
       "Successfully demonstrated a scalable marketplace architecture with production-grade UX for the competition presentation.",
-    repo: "https://github.com/AdhityaMaulana11/SolusiKos",
+    repo: "https://github.com/AdhityaMaulana11/SolusiKos-Prototype-V1.0.git",
   },
   {
     id: "tasktunes",
@@ -164,9 +165,10 @@ export const projects: Project[] = [
       "Single-Activity architecture with Fragments, custom music player with waveform visualization, Pomodoro timer with automatic session transitions, and multi-user system via SharedPreferences + GSON.",
     result:
       "Successfully combined productivity and entertainment with real-time waveform, haptic feedback, and productivity tracking features.",
+    repo: "https://github.com/AdhityaMaulana11/TaskTunes.git",
   },
   {
-    id: "chrome-ext-data-update",
+    id: "chrome-ext-autoupdate-data",
     title: "Data Update Automation — Chrome Extension",
     year: 2024,
     summary:
@@ -187,9 +189,10 @@ export const projects: Project[] = [
       "Injected a control panel into the target page, auto-filled form fields, provided visual feedback for edited inputs, and sequential submission with MutationObserver for dynamic DOM tracking.",
     result:
       "Saved significant time on routine data update processes with reliable workflow automation.",
+    repo: "https://github.com/AdhityaMaulana11/PrimaryCare-Autoupdate-Data-Chrome-Extension.git",
   },
   {
-    id: "chrome-ext-screening",
+    id: "chrome-ext-autoanswer-healthcare-screening",
     title: "Screening Batch Answer Automation — Chrome Extension",
     year: 2024,
     summary:
@@ -209,9 +212,10 @@ export const projects: Project[] = [
       "Floating control panel, auto-select radio buttons via label matching, event dispatching to simulate user interactions, auto-fill physical data, and dynamic BMI monitoring.",
     result:
       "Drastically accelerated screening administration processes with batch automation.",
+    repo: "https://github.com/AdhityaMaulana11/Healthcare-Screening-Batch-Answer-Chrome-Extension.git",
   },
   {
-    id: "spotify-automation",
+    id: "spotify-testing-automation",
     title: "Spotify Web Automation Testing",
     year: 2024,
     summary:
@@ -226,5 +230,6 @@ export const projects: Project[] = [
       "Used Selenium WebDriver to simulate user interactions (auth, navigation, playback, UI validation) with ChromeDriver, dotenv for credential management, and Chalk for console reporting.",
     result:
       "Maintainable and scalable testing framework for automated browser testing.",
+    repo: "https://github.com/AdhityaMaulana11/Spotify-Website-GUI-Testing.git",
   },
 ];
