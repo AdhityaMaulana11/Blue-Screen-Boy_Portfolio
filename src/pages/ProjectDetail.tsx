@@ -1,13 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  ArrowLeft,
-  ExternalLink,
-  Link2,
-  FolderGit,
-  ChevronDown,
-} from "lucide-react";
+import { ArrowLeft, ExternalLink, FolderGit, ChevronDown } from "lucide-react";
 import WindowFrame from "../components/WindowFrame";
 import { projects } from "../data/portfolio";
 import { useMode } from "../context/ModeContext";

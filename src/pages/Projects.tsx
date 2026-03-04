@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, FolderGit } from "lucide-react";
 import WindowFrame from "../components/WindowFrame";
 import { projects } from "../data/portfolio";
 import { useMode } from "../context/ModeContext";
@@ -19,7 +19,7 @@ const Projects = () => {
       pushLog({ type: "ok", msg: "Rendering interface..." });
       setTimeout(() => navigate(`/projects/${projectId}`), 800);
     },
-    [devMode, pushLog, navigate]
+    [devMode, pushLog, navigate],
   );
 
   const handleTechClick = useCallback(
@@ -30,19 +30,27 @@ const Projects = () => {
       pushLog({ type: "info", msg: `filter --tech ${tech}` });
       setTerminalOpen(true);
     },
-    [devMode, pushLog, setTerminalOpen]
+    [devMode, pushLog, setTerminalOpen],
   );
 
   return (
     <div className="min-h-screen px-4 py-12 sm:py-16">
       <div className="max-w-5xl mx-auto">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
           <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">
             <span className="text-primary text-glow">~/</span>projects
-            {devMode && <span className="animate-blink text-primary font-mono">_</span>}
+            {devMode && (
+              <span className="animate-blink text-primary font-mono">_</span>
+            )}
           </h1>
           <p className="text-muted-foreground text-xs sm:text-sm font-mono mb-6 sm:mb-8">
-            {devMode ? `$ ls -la projects/ — ${projects.length} items loaded` : `${projects.length} projects`}
+            {devMode
+              ? `$ ls -la projects/ — ${projects.length} items loaded`
+              : `${projects.length} projects`}
           </p>
         </motion.div>
 
@@ -56,11 +64,18 @@ const Projects = () => {
             >
               <Link
                 to={`/projects/${project.id}`}
-                onClick={(e) => handleProjectClick(e, project.id, project.title)}
+                onClick={(e) =>
+                  handleProjectClick(e, project.id, project.title)
+                }
                 className="block"
               >
-                <WindowFrame title={`~/projects/${project.id}`} className={devMode ? "dev-border-glow" : ""}>
-                  <div className={`p-4 sm:p-5 rounded-b-lg ${devMode ? "" : "card-hover-glow"}`}>
+                <WindowFrame
+                  title={`~/projects/${project.id}`}
+                  className={devMode ? "dev-border-glow" : ""}
+                >
+                  <div
+                    className={`p-4 sm:p-5 rounded-b-lg ${devMode ? "" : "card-hover-glow"}`}
+                  >
                     <div className="flex items-start justify-between mb-2 sm:mb-3 gap-2">
                       <h3 className="font-bold text-base sm:text-lg text-foreground group-hover:text-primary transition-colors min-w-0">
                         {project.title}
@@ -69,7 +84,9 @@ const Projects = () => {
                         {project.year}
                       </span>
                     </div>
-                    <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4 line-clamp-2">{project.summary}</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4 line-clamp-2">
+                      {project.summary}
+                    </p>
                     <div className="flex flex-wrap gap-1 sm:gap-1.5 mb-2 sm:mb-3">
                       {project.tech.slice(0, 4).map((t) => (
                         <span
@@ -85,7 +102,9 @@ const Projects = () => {
                         </span>
                       ))}
                       {project.tech.length > 4 && (
-                        <span className="text-[9px] sm:text-[10px] font-mono text-muted-foreground">+{project.tech.length - 4}</span>
+                        <span className="text-[9px] sm:text-[10px] font-mono text-muted-foreground">
+                          +{project.tech.length - 4}
+                        </span>
                       )}
                     </div>
                     <div className="flex items-center gap-2 sm:gap-3 text-[10px] sm:text-xs text-muted-foreground">
@@ -93,8 +112,12 @@ const Projects = () => {
                       <span>•</span>
                       <span className="truncate">{project.duration}</span>
                       <div className="ml-auto flex gap-2 flex-shrink-0">
-                        {project.live && <ExternalLink className="w-3 h-3 sm:w-3.5 sm:h-3.5" />}
-                        {project.repo && <Github className="w-3 h-3 sm:w-3.5 sm:h-3.5" />}
+                        {project.live && (
+                          <ExternalLink className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                        )}
+                        {project.repo && (
+                          <FolderGit className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                        )}
                       </div>
                     </div>
                   </div>
