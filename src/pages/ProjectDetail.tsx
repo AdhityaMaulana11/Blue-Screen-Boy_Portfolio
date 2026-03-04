@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowLeft,
   ExternalLink,
-  Github,
+  Link2,
   FolderGit,
   ChevronDown,
 } from "lucide-react";
@@ -144,6 +144,16 @@ const ProjectDetail = () => {
                     className="inline-flex items-center gap-1 text-primary hover:underline"
                   >
                     <FolderGit className="w-3.5 h-3.5" /> Github Repo
+                  </a>
+                )}
+                {project.live && (
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-primary hover:underline"
+                  >
+                    <Link2 className="w-3.5 h-3.5" /> Project Online
                   </a>
                 )}
               </div>
