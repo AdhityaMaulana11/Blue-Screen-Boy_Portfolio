@@ -1,4 +1,11 @@
-import { createContext, useContext, useState, useCallback, useRef, useEffect } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useCallback,
+  useRef,
+  useEffect,
+} from "react";
 
 export interface SystemLog {
   type: "info" | "ok" | "warn" | "error";
@@ -28,7 +35,9 @@ export const useMode = (): ModeContextType => {
 };
 
 export const ModeProvider = ({ children }: { children: React.ReactNode }) => {
-  const [devMode, setDevModeState] = useState(() => localStorage.getItem("bsb-mode") === "dev");
+  const [devMode, setDevModeState] = useState(
+    () => localStorage.getItem("bsb-mode") === "dev",
+  );
   const [terminalOpen, setTerminalOpen] = useState(false);
   const [systemLogs, setSystemLogs] = useState<SystemLog[]>([]);
   const [transitioning, setTransitioning] = useState(false);
@@ -53,7 +62,10 @@ export const ModeProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   const pushLog = useCallback((log: SystemLog) => {
-    setSystemLogs((prev) => [...prev.slice(-49), { ...log, timestamp: Date.now() }]);
+    setSystemLogs((prev) => [
+      ...prev.slice(-49),
+      { ...log, timestamp: Date.now() },
+    ]);
   }, []);
 
   const clearLogs = useCallback(() => setSystemLogs([]), []);

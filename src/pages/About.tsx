@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import WindowFrame from "../components/WindowFrame";
+import TerminalReveal from "../components/TerminalReveal";
 import {
   personalInfo,
   education,
@@ -10,10 +11,12 @@ import {
   achievements,
 } from "../data/portfolio";
 import { useMode } from "../context/ModeContext";
+import useSequentialReveal from "../hooks/useSequentialReveal";
 
 const About = () => {
   const { devMode, pushLog } = useMode();
   const categories = [...new Set(skills.map((s) => s.category))];
+  const { isActive, onComplete } = useSequentialReveal(6);
 
   useEffect(() => {
     if (devMode) {
@@ -36,24 +39,30 @@ const About = () => {
             className={devMode ? "dev-border-glow" : ""}
           >
             <div className="p-5 sm:p-8 space-y-4">
-              <h1 className="text-xl sm:text-2xl md:text-3xl font-bold">
-                About{" "}
-                <span className="text-primary text-glow">
-                  Adhitya Maulana Wijaya
-                </span>
-                {devMode && (
-                  <span className="animate-blink text-primary font-mono">
-                    _
+              <TerminalReveal
+                command="cat ~/about/bio.md"
+                active={isActive(0)}
+                onComplete={onComplete(0)}
+              >
+                <h1 className="text-xl sm:text-2xl md:text-3xl font-bold">
+                  About{" "}
+                  <span className="text-primary text-glow">
+                    {personalInfo.alias}
                   </span>
-                )}
-              </h1>
-              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                {personalInfo.bio}
-              </p>
-              <div className="flex flex-wrap gap-3 text-xs sm:text-sm font-mono text-muted-foreground">
-                <span>📍 {personalInfo.location}</span>
-                <span>📧 {personalInfo.email}</span>
-              </div>
+                  {devMode && (
+                    <span className="animate-blink text-primary font-mono">
+                      _
+                    </span>
+                  )}
+                </h1>
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mt-3">
+                  {personalInfo.bio}
+                </p>
+                <div className="flex flex-wrap gap-3 text-xs sm:text-sm font-mono text-muted-foreground mt-3">
+                  <span>📍 {personalInfo.location}</span>
+                  <span>📧 {personalInfo.email}</span>
+                </div>
+              </TerminalReveal>
             </div>
           </WindowFrame>
         </motion.div>
@@ -73,22 +82,28 @@ const About = () => {
             className={devMode ? "dev-border-glow" : ""}
           >
             <div className="p-5 sm:p-8">
-              <h2 className="text-lg sm:text-xl font-bold mb-4">
-                🎓 Education
-              </h2>
-              {education.map((edu, i) => (
-                <div key={i} className="glass-surface rounded-lg p-3 sm:p-4">
-                  <h3 className="font-semibold text-sm sm:text-base text-foreground">
-                    {edu.degree}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-primary font-mono">
-                    {edu.school}
-                  </p>
-                  <p className="text-xs text-muted-foreground mt-1">
-                    {edu.year} — {edu.description}
-                  </p>
-                </div>
-              ))}
+              <TerminalReveal
+                command="cat ~/about/education.json"
+                active={isActive(1)}
+                onComplete={onComplete(1)}
+              >
+                <h2 className="text-lg sm:text-xl font-bold mb-4">
+                  🎓 Education
+                </h2>
+                {education.map((edu, i) => (
+                  <div key={i} className="glass-surface rounded-lg p-3 sm:p-4">
+                    <h3 className="font-semibold text-sm sm:text-base text-foreground">
+                      {edu.degree}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-primary font-mono">
+                      {edu.school}
+                    </p>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      {edu.year} — {edu.description}
+                    </p>
+                  </div>
+                ))}
+              </TerminalReveal>
             </div>
           </WindowFrame>
         </motion.div>
@@ -106,28 +121,34 @@ const About = () => {
             className={devMode ? "dev-border-glow" : ""}
           >
             <div className="p-5 sm:p-8">
-              <h2 className="text-lg sm:text-xl font-bold mb-4">
-                💼 Work Experience
-              </h2>
-              <div className="space-y-4">
-                {career.map((job, i) => (
-                  <div
-                    key={i}
-                    className="relative pl-5 sm:pl-6 border-l-2 border-primary/30"
-                  >
-                    <div className="absolute left-[-5px] top-1.5 w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_hsl(210,100%,56%,0.5)]" />
-                    <h3 className="font-semibold text-sm sm:text-base text-foreground">
-                      {job.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-primary font-mono">
-                      {job.company} • {job.period}
-                    </p>
-                    <p className="text-xs sm:text-sm text-muted-foreground mt-1">
-                      {job.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
+              <TerminalReveal
+                command="cat ~/about/career.log"
+                active={isActive(2)}
+                onComplete={onComplete(2)}
+              >
+                <h2 className="text-lg sm:text-xl font-bold mb-4">
+                  💼 Work Experience
+                </h2>
+                <div className="space-y-4">
+                  {career.map((job, i) => (
+                    <div
+                      key={i}
+                      className="relative pl-5 sm:pl-6 border-l-2 border-primary/30"
+                    >
+                      <div className="absolute left-[-5px] top-1.5 w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_hsl(210,100%,56%,0.5)]" />
+                      <h3 className="font-semibold text-sm sm:text-base text-foreground">
+                        {job.title}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-primary font-mono">
+                        {job.company} • {job.period}
+                      </p>
+                      <p className="text-xs sm:text-sm text-muted-foreground mt-1">
+                        {job.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </TerminalReveal>
             </div>
           </WindowFrame>
         </motion.div>
@@ -147,32 +168,38 @@ const About = () => {
             className={devMode ? "dev-border-glow" : ""}
           >
             <div className="p-5 sm:p-8">
-              <h2 className="text-lg sm:text-xl font-bold mb-4">⚡ Skills</h2>
-              <div className="space-y-4">
-                {categories.map((cat) => (
-                  <div key={cat}>
-                    <p className="text-[10px] sm:text-xs font-mono text-muted-foreground mb-2 uppercase tracking-wider">
-                      {cat}
-                    </p>
-                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                      {skills
-                        .filter((s) => s.category === cat)
-                        .map((s) => (
-                          <span
-                            key={s.name}
-                            className={`px-2 sm:px-3 py-1 rounded-md text-xs sm:text-sm font-mono transition-colors cursor-default ${
-                              devMode
-                                ? "bg-primary/10 text-primary hover:bg-primary/25 dev-border-glow"
-                                : "bg-secondary text-secondary-foreground hover:bg-primary/20 hover:text-primary"
-                            }`}
-                          >
-                            {s.name}
-                          </span>
-                        ))}
+              <TerminalReveal
+                command="cat ~/about/skills.config"
+                active={isActive(3)}
+                onComplete={onComplete(3)}
+              >
+                <h2 className="text-lg sm:text-xl font-bold mb-4">⚡ Skills</h2>
+                <div className="space-y-4">
+                  {categories.map((cat) => (
+                    <div key={cat}>
+                      <p className="text-[10px] sm:text-xs font-mono text-muted-foreground mb-2 uppercase tracking-wider">
+                        {cat}
+                      </p>
+                      <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                        {skills
+                          .filter((s) => s.category === cat)
+                          .map((s) => (
+                            <span
+                              key={s.name}
+                              className={`px-2 sm:px-3 py-1 rounded-md text-xs sm:text-sm font-mono transition-colors cursor-default ${
+                                devMode
+                                  ? "bg-primary/10 text-primary hover:bg-primary/25 dev-border-glow"
+                                  : "bg-secondary text-secondary-foreground hover:bg-primary/20 hover:text-primary"
+                              }`}
+                            >
+                              {s.name}
+                            </span>
+                          ))}
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              </TerminalReveal>
             </div>
           </WindowFrame>
         </motion.div>
@@ -192,20 +219,26 @@ const About = () => {
             className={devMode ? "dev-border-glow" : ""}
           >
             <div className="p-5 sm:p-8">
-              <h2 className="text-lg sm:text-xl font-bold mb-4">
-                📜 Certifications
-              </h2>
-              <ul className="space-y-2">
-                {certifications.map((cert, i) => (
-                  <li
-                    key={i}
-                    className="flex items-start gap-2 text-xs sm:text-sm text-muted-foreground"
-                  >
-                    <span className="text-primary mt-0.5">▸</span>
-                    <span>{cert}</span>
-                  </li>
-                ))}
-              </ul>
+              <TerminalReveal
+                command="ls ~/certs/"
+                active={isActive(4)}
+                onComplete={onComplete(4)}
+              >
+                <h2 className="text-lg sm:text-xl font-bold mb-4">
+                  📜 Certifications
+                </h2>
+                <ul className="space-y-2">
+                  {certifications.map((cert, i) => (
+                    <li
+                      key={i}
+                      className="flex items-start gap-2 text-xs sm:text-sm text-muted-foreground"
+                    >
+                      <span className="text-primary mt-0.5">▸</span>
+                      <span>{cert}</span>
+                    </li>
+                  ))}
+                </ul>
+              </TerminalReveal>
             </div>
           </WindowFrame>
         </motion.div>
@@ -225,19 +258,25 @@ const About = () => {
             className={devMode ? "dev-border-glow" : ""}
           >
             <div className="p-5 sm:p-8">
-              <h2 className="text-lg sm:text-xl font-bold mb-4">
-                🏆 Achievements
-              </h2>
-              <ul className="space-y-2">
-                {achievements.map((ach, i) => (
-                  <li
-                    key={i}
-                    className="text-xs sm:text-sm text-muted-foreground"
-                  >
-                    {ach}
-                  </li>
-                ))}
-              </ul>
+              <TerminalReveal
+                command="cat ~/achievements.trophy"
+                active={isActive(5)}
+                onComplete={onComplete(5)}
+              >
+                <h2 className="text-lg sm:text-xl font-bold mb-4">
+                  🏆 Achievements
+                </h2>
+                <ul className="space-y-2">
+                  {achievements.map((ach, i) => (
+                    <li
+                      key={i}
+                      className="text-xs sm:text-sm text-muted-foreground"
+                    >
+                      {ach}
+                    </li>
+                  ))}
+                </ul>
+              </TerminalReveal>
             </div>
           </WindowFrame>
         </motion.div>

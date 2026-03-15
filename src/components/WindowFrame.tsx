@@ -8,9 +8,17 @@ interface WindowFrameProps {
   onClose?: () => void;
 }
 
-const WindowFrame = ({ title, children, className = "", variant = "default", onClose }: WindowFrameProps) => {
+const WindowFrame = ({
+  title,
+  children,
+  className = "",
+  variant = "default",
+  onClose,
+}: WindowFrameProps) => {
   return (
-    <div className={`rounded-lg overflow-hidden window-shadow ${variant === "terminal" ? "terminal-glow" : "glass-glow"} ${className}`}>
+    <div
+      className={`rounded-lg overflow-hidden window-shadow ${variant === "terminal" ? "terminal-glow" : "glass-glow"} ${className}`}
+    >
       <div className="flex items-center gap-2 px-4 py-2.5 bg-window-header border-b border-border/50">
         <div className="flex gap-1.5">
           <button
@@ -21,9 +29,17 @@ const WindowFrame = ({ title, children, className = "", variant = "default", onC
           <div className="w-3 h-3 rounded-full bg-window-yellow" />
           <div className="w-3 h-3 rounded-full bg-window-green" />
         </div>
-        <span className="text-xs font-mono text-muted-foreground ml-2 select-none">{title}</span>
+        <span className="text-xs font-mono text-muted-foreground ml-2 select-none">
+          {title}
+        </span>
       </div>
-      <div className={variant === "terminal" ? "bg-terminal-bg" : "bg-card/80 backdrop-blur-sm"}>
+      <div
+        className={
+          variant === "terminal"
+            ? "bg-terminal-bg"
+            : "bg-card/80 backdrop-blur-sm"
+        }
+      >
         {children}
       </div>
     </div>

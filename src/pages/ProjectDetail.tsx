@@ -1,8 +1,15 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, ExternalLink, FolderGit, ChevronDown } from "lucide-react";
+import {
+  ArrowLeft,
+  ExternalLink,
+  Github,
+  ChevronDown,
+  ImageIcon,
+} from "lucide-react";
 import WindowFrame from "../components/WindowFrame";
+import TerminalReveal from "../components/TerminalReveal";
 import { projects } from "../data/portfolio";
 import { useMode } from "../context/ModeContext";
 
@@ -95,52 +102,104 @@ const ProjectDetail = () => {
             className={devMode ? "dev-border-glow" : ""}
           >
             <div className="p-6 sm:p-8">
-              <div className="flex items-start justify-between flex-wrap gap-4">
-                <div>
-                  <h1 className="text-2xl sm:text-3xl font-bold text-foreground">
-                    {project.title}
-                    {devMode && (
-                      <span className="animate-blink text-primary font-mono">
-                        _
-                      </span>
-                    )}
-                  </h1>
-                  <p className="text-muted-foreground mt-1">
-                    {project.summary}
-                  </p>
+              <TerminalReveal
+                command={`cat ~/projects/${project.id}/README.md`}
+                delay={0}
+              >
+                <div className="flex items-start justify-between flex-wrap gap-4">
+                  <div>
+                    <h1 className="text-2xl sm:text-3xl font-bold text-foreground">
+                      {project.title}
+                      {devMode && (
+                        <span className="animate-blink text-primary font-mono">
+                          _
+                        </span>
+                      )}
+                    </h1>
+                    <p className="text-muted-foreground mt-1">
+                      {project.summary}
+                    </p>
+                  </div>
+                  <span className="text-sm font-mono bg-secondary px-3 py-1 rounded text-secondary-foreground">
+                    {project.year}
+                  </span>
                 </div>
-                <span className="text-sm font-mono bg-secondary px-3 py-1 rounded text-secondary-foreground">
-                  {project.year}
-                </span>
-              </div>
-              <div className="flex flex-wrap gap-4 mt-4 text-sm">
-                <span className="font-mono text-muted-foreground">
-                  👤 {project.role}
-                </span>
-                <span className="font-mono text-muted-foreground">
-                  ⏱ {project.duration}
-                </span>
-                {project.live && (
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-primary hover:underline"
-                  >
-                    <ExternalLink className="w-3.5 h-3.5" /> Live
-                  </a>
+                <div className="flex flex-wrap gap-4 mt-4 text-sm">
+                  <span className="font-mono text-muted-foreground">
+                    👤 {project.role}
+                  </span>
+                  <span className="font-mono text-muted-foreground">
+                    ⏱ {project.duration}
+                  </span>
+                  {project.live && (
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-primary hover:underline"
+                    >
+                      <ExternalLink className="w-3.5 h-3.5" /> Live
+                    </a>
+                  )}
+                  {project.repo && (
+                    <a
+                      href={project.repo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-primary hover:underline"
+                    >
+                      <Github className="w-3.5 h-3.5" /> Repo
+                    </a>
+                  )}
+                </div>
+              </TerminalReveal>
+            </div>
+          </WindowFrame>
+        </motion.div>
+
+        {/* Preview Image */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15 }}
+        >
+          <WindowFrame
+            title={`~/projects/${project.id} — preview.png`}
+            className={devMode ? "dev-border-glow" : ""}
+          >
+            <div className="p-6 sm:p-8">
+              <TerminalReveal
+                command={`open ~/projects/${project.id}/preview.png`}
+                delay={200}
+              >
+                {project.screenshots.length > 0 ? (
+                  <div className="space-y-4">
+                    {project.screenshots.map((src, i) => (
+                      <img
+                        key={i}
+                        src={src}
+                        alt={`${project.title} preview ${i + 1}`}
+                        className="w-full rounded-lg border border-border/50 object-cover"
+                        loading="lazy"
+                      />
+                    ))}
+                  </div>
+                ) : (
+                  <div className="flex flex-col items-center justify-center py-12 sm:py-16 border-2 border-dashed border-border/50 rounded-lg">
+                    <ImageIcon className="w-12 h-12 sm:w-16 sm:h-16 text-muted-foreground/30 mb-3" />
+                    <p className="text-sm font-mono text-muted-foreground/50">
+                      {devMode
+                        ? "// TODO: Add project screenshots"
+                        : "Preview coming soon"}
+                    </p>
+                    <p className="text-xs text-muted-foreground/30 mt-1">
+                      {devMode
+                        ? `screenshots[] is empty for "${project.id}"`
+                        : "Screenshots will be added shortly"}
+                    </p>
+                  </div>
                 )}
-                {project.repo && (
-                  <a
-                    href={project.repo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-primary hover:underline"
-                  >
-                    <FolderGit className="w-3.5 h-3.5" /> Github Repo
-                  </a>
-                )}
-              </div>
+              </TerminalReveal>
             </div>
           </WindowFrame>
         </motion.div>
@@ -156,34 +215,36 @@ const ProjectDetail = () => {
             className={devMode ? "dev-border-glow" : ""}
           >
             <div className="p-6 sm:p-8 space-y-6">
-              {[
-                {
-                  label: "🔍 Problem",
-                  content: project.problem,
-                  color: "text-destructive",
-                },
-                {
-                  label: "💡 Approach",
-                  content: project.approach,
-                  color: "text-window-yellow",
-                },
-                {
-                  label: "🚀 Result",
-                  content: project.result,
-                  color: "text-terminal-green",
-                },
-              ].map((section) => (
-                <div key={section.label}>
-                  <h3
-                    className={`font-bold font-mono text-sm ${section.color} mb-1`}
-                  >
-                    {section.label}
-                  </h3>
-                  <p className="text-muted-foreground text-sm">
-                    {section.content}
-                  </p>
-                </div>
-              ))}
+              <TerminalReveal command="cat case-study.md" delay={400}>
+                {[
+                  {
+                    label: "🔍 Problem",
+                    content: project.problem,
+                    color: "text-destructive",
+                  },
+                  {
+                    label: "💡 Approach",
+                    content: project.approach,
+                    color: "text-window-yellow",
+                  },
+                  {
+                    label: "🚀 Result",
+                    content: project.result,
+                    color: "text-terminal-green",
+                  },
+                ].map((section) => (
+                  <div key={section.label}>
+                    <h3
+                      className={`font-bold font-mono text-sm ${section.color} mb-1`}
+                    >
+                      {section.label}
+                    </h3>
+                    <p className="text-muted-foreground text-sm">
+                      {section.content}
+                    </p>
+                  </div>
+                ))}
+              </TerminalReveal>
             </div>
           </WindowFrame>
         </motion.div>
@@ -199,24 +260,26 @@ const ProjectDetail = () => {
             className={devMode ? "dev-border-glow" : ""}
           >
             <div className="p-6 sm:p-8">
-              <h3 className="font-bold text-sm font-mono text-muted-foreground mb-3">
-                Tech Stack
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {project.tech.map((t) => (
-                  <Link
-                    key={t}
-                    to={`/projects?tech=${t}`}
-                    className={`px-3 py-1.5 rounded-md text-sm font-mono transition-colors ${
-                      devMode
-                        ? "bg-terminal-green/10 text-terminal-green hover:bg-terminal-green/20"
-                        : "bg-primary/10 text-primary hover:bg-primary/20"
-                    }`}
-                  >
-                    {t}
-                  </Link>
-                ))}
-              </div>
+              <TerminalReveal command="cat tech-stack.json" delay={600}>
+                <h3 className="font-bold text-sm font-mono text-muted-foreground mb-3">
+                  Tech Stack
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {project.tech.map((t) => (
+                    <Link
+                      key={t}
+                      to={`/projects?tech=${t}`}
+                      className={`px-3 py-1.5 rounded-md text-sm font-mono transition-colors ${
+                        devMode
+                          ? "bg-terminal-green/10 text-terminal-green hover:bg-terminal-green/20"
+                          : "bg-primary/10 text-primary hover:bg-primary/20"
+                      }`}
+                    >
+                      {t}
+                    </Link>
+                  ))}
+                </div>
+              </TerminalReveal>
             </div>
           </WindowFrame>
         </motion.div>

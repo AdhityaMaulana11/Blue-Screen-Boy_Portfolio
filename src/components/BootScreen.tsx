@@ -51,8 +51,8 @@ const BootScreen = ({ onComplete }: BootScreenProps) => {
                   line.text.startsWith("✔")
                     ? "text-terminal-green"
                     : line.text === "Welcome, visitor."
-                    ? "text-primary text-glow mt-2"
-                    : "text-muted-foreground"
+                      ? "text-primary text-glow mt-2"
+                      : "text-muted-foreground"
                 }
               >
                 {line.text}

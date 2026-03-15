@@ -16,11 +16,17 @@ const StatusBar = () => {
         >
           <div className="flex justify-center px-2">
             <div className="font-mono text-[8px] sm:text-[9px] tracking-widest text-muted-foreground/60 uppercase flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-1 bg-background/80 backdrop-blur-sm rounded-t border-t border-x border-border/30">
-              <span>Status: <span className="text-terminal-green">Online</span></span>
+              <span>
+                Status: <span className="text-terminal-green">Online</span>
+              </span>
               <span className="text-border">|</span>
-              <span>Auth: <span className="text-primary">Enabled</span></span>
+              <span>
+                Auth: <span className="text-primary">Enabled</span>
+              </span>
               <span className="text-border hidden sm:inline">|</span>
-              <span className="hidden sm:inline">API: <span className="text-terminal-green">Active</span></span>
+              <span className="hidden sm:inline">
+                API: <span className="text-terminal-green">Active</span>
+              </span>
             </div>
           </div>
         </motion.div>

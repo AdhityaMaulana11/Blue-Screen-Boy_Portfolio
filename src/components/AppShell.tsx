@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import Taskbar from "./Taskbar";
 import TerminalWidget from "./TerminalWidget";
+import TerminalFAB from "./TerminalFAB";
 import BootScreen from "./BootScreen";
 import StatusBar from "./StatusBar";
 import DevLogToast from "./DevLogToast";
@@ -13,7 +14,9 @@ const BOOT_KEY = "bsb-booted";
 
 const AppShell = () => {
   const { devMode, terminalOpen, transitioning } = useMode();
-  const [booted, setBooted] = useState(() => sessionStorage.getItem(BOOT_KEY) === "1");
+  const [booted, setBooted] = useState(
+    () => sessionStorage.getItem(BOOT_KEY) === "1",
+  );
 
   useDevNavLog();
 
@@ -68,6 +71,7 @@ const AppShell = () => {
       <DevLogToast />
       <StatusBar />
       <Taskbar />
+      <TerminalFAB />
       <TerminalWidget />
     </div>
   );

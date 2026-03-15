@@ -32,7 +32,9 @@ const DevLogToast = () => {
       setCollapsed(false);
       if (timerRef.current) clearTimeout(timerRef.current);
     }
-    return () => { if (timerRef.current) clearTimeout(timerRef.current); };
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
   }, [devMode]);
 
   if (!devMode || recent.length === 0) return null;
@@ -50,7 +52,10 @@ const DevLogToast = () => {
             onClick={() => {
               setCollapsed(false);
               if (timerRef.current) clearTimeout(timerRef.current);
-              timerRef.current = setTimeout(() => setCollapsed(true), AUTO_HIDE_MS);
+              timerRef.current = setTimeout(
+                () => setCollapsed(true),
+                AUTO_HIDE_MS,
+              );
             }}
             className="ml-1 mb-1 p-1.5 rounded-r-md bg-secondary/80 border border-l-0 border-primary/20 text-primary hover:bg-primary/20 transition-colors backdrop-blur-sm"
             title="Show system logs"
@@ -84,10 +89,13 @@ const DevLogToast = () => {
                       <span className="text-muted-foreground">[LOG] </span>
                       <span
                         className={
-                          log.type === "ok" ? "text-terminal-green" :
-                          log.type === "warn" ? "text-window-yellow" :
-                          log.type === "error" ? "text-destructive" :
-                          "text-primary"
+                          log.type === "ok"
+                            ? "text-terminal-green"
+                            : log.type === "warn"
+                              ? "text-window-yellow"
+                              : log.type === "error"
+                                ? "text-destructive"
+                                : "text-primary"
                         }
                       >
                         {log.msg}

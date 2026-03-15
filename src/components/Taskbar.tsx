@@ -1,18 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
-import {
-  Home,
-  User,
-  FolderOpen,
-  Mail,
-  Terminal,
-  Monitor,
-  Code,
-} from "lucide-react";
+import { Home, User, FolderOpen, Mail, Monitor, Code } from "lucide-react";
 import { useMode } from "../context/ModeContext";
 
 const Taskbar = () => {
   const location = useLocation();
-  const { devMode, toggleDevMode, terminalOpen, toggleTerminal } = useMode();
+  const { devMode, toggleDevMode } = useMode();
 
   const navItems = [
     { path: "/", label: "Home", icon: Home },
@@ -74,25 +66,7 @@ const Taskbar = () => {
               <Monitor className="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:scale-110" />
             )}
             <span className="text-[9px] sm:text-xs font-medium font-mono">
-              {devMode ? "Dev" : "GUI"}
-            </span>
-          </button>
-
-          {/* Terminal */}
-          <button
-            onClick={toggleTerminal}
-            className={`flex flex-col items-center gap-0.5 px-2 sm:px-4 py-1 sm:py-1.5 rounded-lg transition-all duration-200 group ${
-              terminalOpen
-                ? "bg-terminal-green/15 text-terminal-green"
-                : "text-muted-foreground hover:text-terminal-green hover:bg-secondary/50"
-            }`}
-            aria-label="Toggle Terminal (Ctrl+K)"
-          >
-            <Terminal
-              className={`w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:scale-110 ${terminalOpen ? "drop-shadow-[0_0_6px_hsl(142,70%,56%,0.5)]" : ""}`}
-            />
-            <span className="text-[9px] sm:text-xs font-medium font-mono">
-              Terminal
+              Switch
             </span>
           </button>
         </div>
