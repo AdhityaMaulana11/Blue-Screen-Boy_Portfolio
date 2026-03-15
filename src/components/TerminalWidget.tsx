@@ -143,7 +143,8 @@ const TerminalWidget = () => {
   filter --tech  — Filter by technology
   contact        — Open contact page
   cv             — Download CV
-  clear          — Clear terminal`,
+  clear          — Clear terminal
+  bsod           — Easter Egg`,
             "info",
           );
           break;

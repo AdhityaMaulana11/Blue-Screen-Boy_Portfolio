@@ -19,13 +19,13 @@ const BSODScreen = ({ active, onComplete }: BSODScreenProps) => {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(interval);
-          setTimeout(onComplete, 400);
+          setTimeout(onComplete, 3000);
           return 100;
         }
         // Random increment between 3–12 for organic feel
         return Math.min(prev + Math.floor(Math.random() * 10) + 3, 100);
       });
-    }, 200);
+    }, 500);
 
     return () => clearInterval(interval);
   }, [active, onComplete]);
@@ -41,18 +41,18 @@ const BSODScreen = ({ active, onComplete }: BSODScreenProps) => {
           className="fixed inset-0 z-[200] bg-primary flex flex-col justify-center px-6 sm:px-16 md:px-24 lg:px-32"
         >
           {/* Sad face */}
-          <div className="text-primary-foreground text-7xl sm:text-8xl md:text-9xl font-light leading-none mb-6 sm:mb-8">
+          <div className="text-white text-7xl sm:text-8xl md:text-9xl font-light leading-none mb-6 sm:mb-8">
             :(
           </div>
 
           {/* Main message */}
-          <p className="text-primary-foreground text-lg sm:text-xl md:text-2xl leading-relaxed max-w-2xl mb-6 sm:mb-8">
+          <p className="text-white text-lg sm:text-xl md:text-2xl leading-relaxed max-w-2xl mb-6 sm:mb-8">
             This system crashed due to too much talent. We're just collecting
             some error info, and then we'll restart for you.
           </p>
 
           {/* Progress */}
-          <p className="text-primary-foreground text-base sm:text-lg md:text-xl mb-10 sm:mb-16">
+          <p className="text-white text-base sm:text-lg md:text-xl mb-10 sm:mb-16">
             {progress}% complete
           </p>
 
@@ -67,16 +67,16 @@ const BSODScreen = ({ active, onComplete }: BSODScreenProps) => {
                     [
                       0, 1, 2, 4, 5, 6, 10, 11, 12, 14, 18, 19, 20, 22, 23, 24,
                     ].includes(i)
-                      ? "bg-primary-foreground/60"
-                      : "bg-primary-foreground/15"
+                      ? "bg-white/80"
+                      : "bg-primary-foreground/20"
                   }`}
                 />
               ))}
             </div>
-            <div className="text-primary-foreground/70 text-[10px] sm:text-xs space-y-1">
+            <div className="text-white/70 text-[10px] sm:text-xs space-y-1">
               <p>
                 For more information about this issue and possible fixes, visit{" "}
-                <span className="text-primary-foreground/90">
+                <span className="text-white/90">
                   https://bluescreenboy.dev/stopcode
                 </span>
               </p>
