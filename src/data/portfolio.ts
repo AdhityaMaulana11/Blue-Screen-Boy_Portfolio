@@ -126,8 +126,8 @@ export const projects: Project[] = [
     repo: "",
   },
   {
-    id: "solusikos",
-    title: "SolusiKos — SaaS Prototype",
+    id: "domira",
+    title: "Domira.id — SaaS Prototype",
     year: 2026,
     summary:
       "High-fidelity marketplace prototype for boarding houses inspired by Mamikos, built for the P2MW competition. Supports 3 interactive roles: Tenant, Owner, and Service Provider.",
@@ -141,8 +141,8 @@ export const projects: Project[] = [
       "Built a SaaS prototype with Next.js App Router, fully mocked data, 3 interactive dashboards, advanced filtering, dynamic booking, survey scheduling, and role-switching.",
     result:
       "Successfully demonstrated a scalable marketplace architecture with production-grade UX for the competition presentation.",
-    repo: "https://github.com/AdhityaMaulana11/SolusiKos-Prototype-V1.0.git",
-    live: "https://solusi-kos-prototype-v1-0.vercel.app/",
+    repo: "https://github.com/AdhityaMaulana11/Domira-Prototype-V1.0.git",
+    live: "https://domira-prototype-v1-0.vercel.app/",
   },
   {
     id: "tasktunes",
