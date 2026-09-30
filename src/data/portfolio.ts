@@ -1,6 +1,7 @@
 export interface Project {
   id: string;
   title: string;
+  category: "Full-Stack" | "Frontend" | "Backend" | "Mobile" | "Automation";
   year: number;
   summary: string;
   screenshots: string[];
@@ -12,6 +13,13 @@ export interface Project {
   problem: string;
   approach: string;
   result: string;
+}
+
+export interface Achievement {
+  rank: "1st" | "2nd" | "3rd";
+  title: string;
+  event: string;
+  year: number;
 }
 
 export const personalInfo = {
@@ -92,16 +100,32 @@ export const certifications = [
   "Alibaba Cloud Developer Certification",
 ];
 
-export const achievements = [
-  "🥇 1st Place — Creative Video Content Competition, GENBI UNIKU, 2025",
-  "🥈 2nd Place — Academic Quiz Competition, OIM UNIKU, 2025",
-  "🥉 3rd Place — PKM-PM Proposal Competition, OIM UNIKU, 2024",
+export const achievements: Achievement[] = [
+  {
+    rank: "1st",
+    title: "1st Place Winner — Creative Video Content Competition",
+    event: "GENBI UNIKU",
+    year: 2025,
+  },
+  {
+    rank: "2nd",
+    title: "2nd Place Winner — Academic Quiz Competition",
+    event: "OIM UNIKU",
+    year: 2025,
+  },
+  {
+    rank: "3rd",
+    title: "3rd Place Winner — PKM-PM Proposal Competition",
+    event: "OIM UNIKU",
+    year: 2024,
+  },
 ];
 
 export const projects: Project[] = [
   {
     id: "cms-aisee",
     title: "CMS Website for AISEE",
+    category: "Full-Stack",
     year: 2025,
     summary:
       "Full-stack web platform serving as the official digital portal for the AISEE organization. Centralized information management, membership, news publishing, and academic journal integration via OJS 3.",
@@ -128,6 +152,7 @@ export const projects: Project[] = [
   {
     id: "domira",
     title: "Domira.id — SaaS Prototype",
+    category: "Full-Stack",
     year: 2026,
     summary:
       "High-fidelity marketplace prototype for boarding houses inspired by Mamikos, built for the P2MW competition. Supports 3 interactive roles: Tenant, Owner, and Service Provider.",
@@ -147,6 +172,7 @@ export const projects: Project[] = [
   {
     id: "tasktunes",
     title: "TaskTunes",
+    category: "Mobile",
     year: 2025,
     summary:
       "Android productivity app integrating the Pomodoro technique with a personal music experience to enhance focus.",
@@ -171,6 +197,7 @@ export const projects: Project[] = [
   {
     id: "chrome-ext-autoupdate-data",
     title: "Data Update Automation — Chrome Extension",
+    category: "Automation",
     year: 2024,
     summary:
       "Chrome Extension to automate repetitive data update workflows on specific websites with pause, resume, and stop controls.",
@@ -195,6 +222,7 @@ export const projects: Project[] = [
   {
     id: "chrome-ext-autoanswer-healthcare-screening",
     title: "Screening Batch Answer Automation — Chrome Extension",
+    category: "Automation",
     year: 2024,
     summary:
       "Chrome Extension to automate batch screening form filling with automatic multi-step navigation.",
@@ -218,6 +246,7 @@ export const projects: Project[] = [
   {
     id: "spotify-testing-automation",
     title: "Spotify Web Automation Testing",
+    category: "Automation",
     year: 2024,
     summary:
       "Automated GUI testing framework for Spotify Web Player using Selenium WebDriver with Node.js.",

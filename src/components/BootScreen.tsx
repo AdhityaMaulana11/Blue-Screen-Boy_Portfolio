@@ -7,10 +7,10 @@ interface BootScreenProps {
 
 const BOOT_LINES = [
   { text: "Booting Blue Screen Boy OS v1.0...", delay: 0 },
-  { text: "Loading modules...", delay: 300 },
-  { text: "✔ React Engine initialized", delay: 600 },
-  { text: "✔ Automation Layer activated", delay: 900 },
-  { text: "✔ Portfolio Interface ready", delay: 1100 },
+  { text: "Loading core modules...", delay: 300 },
+  { text: "[OK] React Engine initialized", delay: 600 },
+  { text: "[OK] Automation Layer activated", delay: 900 },
+  { text: "[OK] Portfolio Interface ready", delay: 1100 },
   { text: "", delay: 1300 },
   { text: "Welcome, visitor.", delay: 1350 },
 ];
@@ -48,10 +48,10 @@ const BootScreen = ({ onComplete }: BootScreenProps) => {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.15 }}
                 className={
-                  line.text.startsWith("✔")
+                  line.text.startsWith("[OK]")
                     ? "text-terminal-green"
                     : line.text === "Welcome, visitor."
-                      ? "text-primary text-glow mt-2"
+                      ? "text-primary text-glow mt-2 font-semibold"
                       : "text-muted-foreground"
                 }
               >

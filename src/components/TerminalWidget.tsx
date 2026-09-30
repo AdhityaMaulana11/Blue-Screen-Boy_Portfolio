@@ -42,7 +42,7 @@ const DEV_BOOT_LINES: TerminalLine[] = [
   { type: "info", text: "Booting Blue Screen Boy OS v2.0..." },
   { type: "output", text: "Initializing React Engine..." },
   { type: "output", text: "Mounting Automation Layer..." },
-  { type: "success", text: "✔ System Ready.\n" },
+  { type: "success", text: "[OK] System Ready.\n" },
 ];
 
 const TerminalWidget = () => {
@@ -152,9 +152,9 @@ const TerminalWidget = () => {
           addLine(
             `${personalInfo.name} aka "${personalInfo.alias}"
 ${personalInfo.tagline}
-📍 ${personalInfo.location}
-📧 ${personalInfo.email}
-🔗 ${personalInfo.github}`,
+Location: ${personalInfo.location}
+Email: ${personalInfo.email}
+GitHub: ${personalInfo.github}`,
             "success",
           );
           break;
@@ -221,7 +221,7 @@ ${personalInfo.tagline}
           setTimeout(() => navigate("/contact"), 500);
           break;
         case "cv":
-          addLine("📄 Downloading CV...", "success");
+          addLine("[CV] Opening PDF: CV-Adhitya_Maulana_Wijaya.pdf", "success");
           window.open("/CV-Adhitya_Maulana_Wijaya.pdf", "_blank");
           break;
         case "bsod":

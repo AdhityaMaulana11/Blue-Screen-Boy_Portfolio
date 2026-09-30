@@ -112,6 +112,45 @@
     transform: translateY(-2px);
   }
 
+  /* 3D perspective tilt on project cards */
+  .card-3d {
+    transform-style: preserve-3d;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    will-change: transform;
+  }
+
+  .card-3d:hover {
+    transform: perspective(800px) rotateX(-2deg) rotateY(3deg) translateY(-4px);
+    box-shadow: 0 20px 40px -8px hsl(222 47% 4% / 0.6),
+                0 0 30px -5px hsl(210 100% 56% / 0.25),
+                0 0 0 1px hsl(210 100% 56% / 0.15);
+  }
+
+  /* Custom scrollbar for dark theme */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(222 40% 8%);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(222 30% 20%);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(210 100% 56% / 0.4);
+  }
+
+  /* Selection highlight styled to match theme */
+  ::selection {
+    background: hsl(210 100% 56% / 0.3);
+    color: hsl(210 40% 98%);
+  }
+
   .terminal-glow {
     box-shadow: 0 0 40px -10px hsl(142 70% 56% / 0.2),
                 0 0 80px -20px hsl(142 70% 56% / 0.1),
