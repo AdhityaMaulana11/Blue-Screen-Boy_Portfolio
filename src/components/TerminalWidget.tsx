@@ -134,17 +134,17 @@ const TerminalWidget = () => {
         case "help":
           addLine(
             `Available commands:
-  help           — Show this help
-  whois          — Short bio + CV link
-  about          — Education & career summary
-  skills         — List skills
-  projects       — List all projects
-  open <id>      — Open project detail
-  filter --tech  — Filter by technology
-  contact        — Open contact page
-  cv             — Download CV
-  clear          — Clear terminal
-  bsod           — Easter Egg`,
+  help           : Show this help
+  whois          : Short bio + CV link
+  about          : Education & career summary
+  skills         : List skills
+  projects       : List all projects
+  open <id>      : Open project detail
+  filter --tech  : Filter by technology
+  contact        : Open contact page
+  cv             : Download CV
+  clear          : Clear terminal
+  bsod           : Easter Egg`,
             "info",
           );
           break;
@@ -159,11 +159,11 @@ GitHub: ${personalInfo.github}`,
           );
           break;
         case "about":
-          addLine(`── Education ──`, "info");
+          addLine(`[Education]`, "info");
           education.forEach((e) =>
             addLine(`  ${e.degree} @ ${e.school} (${e.year})`),
           );
-          addLine(`\n── Career ──`, "info");
+          addLine(`\n[Career]`, "info");
           career.forEach((c) =>
             addLine(`  ${c.title} @ ${c.company} (${c.period})`),
           );
@@ -304,7 +304,7 @@ GitHub: ${personalInfo.github}`,
             aria-label="Terminal"
           >
             <WindowFrame
-              title="~/terminal — bash"
+              title="~/terminal : bash"
               variant="terminal"
               onClose={() => setTerminalOpen(false)}
             >

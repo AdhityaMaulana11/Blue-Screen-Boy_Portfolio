@@ -4,10 +4,16 @@ import { motion } from "framer-motion";
 import { Home, FolderOpen, AlertTriangle } from "lucide-react";
 import WindowFrame from "../components/WindowFrame";
 import { useMode } from "../context/ModeContext";
+import { usePageMeta } from "../hooks/usePageMeta";
 
 const NotFound = () => {
   const location = useLocation();
   const { devMode, pushLog } = useMode();
+
+  usePageMeta({
+    title: "404 - Page Not Found",
+    description: "The requested route could not be found on Blue Screen Boy's portfolio.",
+  });
 
   useEffect(() => {
     console.error(
@@ -44,7 +50,7 @@ const NotFound = () => {
         className="relative z-10 w-full max-w-3xl"
       >
         <WindowFrame
-          title={devMode ? "~/sys/error — exception" : "~/404 — missing route"}
+          title={devMode ? "~/sys/error : exception" : "~/404 : missing route"}
           className={devMode ? "dev-border-glow" : ""}
         >
           <div className="p-6 sm:p-8 md:p-10">

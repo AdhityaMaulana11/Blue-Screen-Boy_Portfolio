@@ -71,9 +71,9 @@ export default {
         navy: "hsl(var(--navy-deep))",
         window: {
           header: "hsl(var(--window-header))",
-          red: "hsl(var(--window-dot-red))",
-          yellow: "hsl(var(--window-dot-yellow))",
-          green: "hsl(var(--window-dot-green))",
+          red: "hsl(var(--window-red))",
+          yellow: "hsl(var(--window-yellow))",
+          green: "hsl(var(--window-green))",
         },
         taskbar: "hsl(var(--taskbar))",
       },

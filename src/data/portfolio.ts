@@ -93,7 +93,7 @@ export const skills = [
 ];
 
 export const certifications = [
-  "Junior Web Developer — Vocational School Graduate Academy Digital Talent Scholarship 2024",
+  "Junior Web Developer: Vocational School Graduate Academy Digital Talent Scholarship 2024",
   "Dicoding Intermediate Front-End Web",
   "Analyze Speech and Language with Google APIs",
   "Analyze Sentiment with Natural Language API",
@@ -103,19 +103,19 @@ export const certifications = [
 export const achievements: Achievement[] = [
   {
     rank: "1st",
-    title: "1st Place Winner — Creative Video Content Competition",
+    title: "1st Place Winner: Creative Video Content Competition",
     event: "GENBI UNIKU",
     year: 2025,
   },
   {
     rank: "2nd",
-    title: "2nd Place Winner — Academic Quiz Competition",
+    title: "2nd Place Winner: Academic Quiz Competition",
     event: "OIM UNIKU",
     year: 2025,
   },
   {
     rank: "3rd",
-    title: "3rd Place Winner — PKM-PM Proposal Competition",
+    title: "3rd Place Winner: PKM-PM Proposal Competition",
     event: "OIM UNIKU",
     year: 2024,
   },
@@ -129,7 +129,7 @@ export const projects: Project[] = [
     year: 2025,
     summary:
       "Full-stack web platform serving as the official digital portal for the AISEE organization. Centralized information management, membership, news publishing, and academic journal integration via OJS 3.",
-    screenshots: [],
+    screenshots: ["/projects/aisee-cms.jpg"],
     tech: [
       "React.js",
       "Express.js",
@@ -151,12 +151,12 @@ export const projects: Project[] = [
   },
   {
     id: "domira",
-    title: "Domira.id — SaaS Prototype",
+    title: "Domira.id - SaaS Prototype",
     category: "Full-Stack",
     year: 2026,
     summary:
       "High-fidelity marketplace prototype for boarding houses inspired by Mamikos, built for the P2MW competition. Supports 3 interactive roles: Tenant, Owner, and Service Provider.",
-    screenshots: [],
+    screenshots: ["/projects/domira-saas.jpg"],
     tech: ["Next.js", "TypeScript", "ShadcnUI", "Recharts", "Framer Motion"],
     role: "Full-Stack Developer",
     duration: "P2MW Competition",
@@ -176,7 +176,7 @@ export const projects: Project[] = [
     year: 2025,
     summary:
       "Android productivity app integrating the Pomodoro technique with a personal music experience to enhance focus.",
-    screenshots: [],
+    screenshots: ["/projects/tasktunes-app.jpg"],
     tech: [
       "Kotlin",
       "Android SDK",
@@ -196,12 +196,12 @@ export const projects: Project[] = [
   },
   {
     id: "chrome-ext-autoupdate-data",
-    title: "Data Update Automation — Chrome Extension",
+    title: "Data Update Automation - Chrome Extension",
     category: "Automation",
     year: 2024,
     summary:
       "Chrome Extension to automate repetitive data update workflows on specific websites with pause, resume, and stop controls.",
-    screenshots: [],
+    screenshots: ["/projects/automation-tool.jpg"],
     tech: [
       "JavaScript",
       "Chrome Extension (MV3)",
@@ -221,12 +221,12 @@ export const projects: Project[] = [
   },
   {
     id: "chrome-ext-autoanswer-healthcare-screening",
-    title: "Screening Batch Answer Automation — Chrome Extension",
+    title: "Screening Batch Answer Automation - Chrome Extension",
     category: "Automation",
     year: 2024,
     summary:
       "Chrome Extension to automate batch screening form filling with automatic multi-step navigation.",
-    screenshots: [],
+    screenshots: ["/projects/automation-tool.jpg"],
     tech: [
       "JavaScript (ES6)",
       "Chrome Extension (MV3)",
@@ -250,7 +250,7 @@ export const projects: Project[] = [
     year: 2024,
     summary:
       "Automated GUI testing framework for Spotify Web Player using Selenium WebDriver with Node.js.",
-    screenshots: [],
+    screenshots: ["/projects/automation-tool.jpg"],
     tech: ["Node.js", "Selenium WebDriver", "ChromeDriver", "dotenv", "Chalk"],
     role: "QA Automation Engineer",
     duration: "Academic Project",
