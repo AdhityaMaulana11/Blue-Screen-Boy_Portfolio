@@ -2,7 +2,6 @@ import { useState, useCallback } from "react";
 import { Outlet } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import Taskbar from "./Taskbar";
-import TopNav from "./TopNav";
 import TerminalWidget from "./TerminalWidget";
 import TerminalFAB from "./TerminalFAB";
 import BootScreen from "./BootScreen";
@@ -29,9 +28,6 @@ const AppShell = () => {
   return (
     <div className="min-h-screen bg-background relative">
       {!booted && <BootScreen onComplete={handleBootComplete} />}
-
-      {/* Top navigation strip: always visible */}
-      <TopNav />
 
       {/* Mode transition flash */}
       <AnimatePresence>
@@ -68,8 +64,7 @@ const AppShell = () => {
         )}
       </AnimatePresence>
 
-      {/* Main viewport area with clearance for header and mobile bottom dock */}
-      <main className="pb-20 sm:pb-12 pt-16 sm:pt-20 relative z-[2]">
+      <main className="pb-20 relative z-[2]">
         <Outlet />
       </main>
 

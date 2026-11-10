@@ -22,7 +22,7 @@ const BSODScreen = ({ active, onComplete }: BSODScreenProps) => {
           setTimeout(onComplete, 3000);
           return 100;
         }
-        // Random increment between 3-12 for organic feel
+        // Random increment between 3–12 for organic feel
         return Math.min(prev + Math.floor(Math.random() * 10) + 3, 100);
       });
     }, 500);

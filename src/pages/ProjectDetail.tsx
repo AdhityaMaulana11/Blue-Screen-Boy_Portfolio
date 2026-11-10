@@ -17,12 +17,12 @@ import {
   Check,
   Cpu,
   Layers,
+  Terminal,
 } from "lucide-react";
 import WindowFrame from "../components/WindowFrame";
 import TerminalReveal from "../components/TerminalReveal";
 import { projects } from "../data/portfolio";
 import { useMode } from "../context/ModeContext";
-import { usePageMeta } from "../hooks/usePageMeta";
 
 const ProjectDetail = () => {
   const { id } = useParams();
@@ -36,14 +36,6 @@ const ProjectDetail = () => {
   const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null;
   const nextProject =
     currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
-
-  usePageMeta({
-    title: project ? project.title : "Project Not Found",
-    description: project
-      ? `${project.summary} | Built with ${project.tech.slice(0, 4).join(", ")}.`
-      : "This project could not be found in the portfolio.",
-    canonical: `/projects/${id}`,
-  });
 
   useEffect(() => {
     if (devMode && project) {
@@ -156,7 +148,7 @@ const ProjectDetail = () => {
           transition={{ delay: 0.1 }}
         >
           <WindowFrame
-            title={`~/projects/${project.id} : README.md`}
+            title={`~/projects/${project.id} — README.md`}
             className={devMode ? "dev-border-glow" : ""}
           >
             <div className="p-5 sm:p-8">
@@ -211,7 +203,7 @@ const ProjectDetail = () => {
                       </a>
                     )}
 
-                    {project.repo && project.repo.trim() !== "" && (
+                    {project.repo && (
                       <a
                         href={project.repo}
                         target="_blank"
@@ -236,7 +228,7 @@ const ProjectDetail = () => {
           transition={{ delay: 0.15 }}
         >
           <WindowFrame
-            title={`~/projects/${project.id} : architecture.view`}
+            title={`~/projects/${project.id} — architecture.view`}
             className={devMode ? "dev-border-glow" : ""}
           >
             <div className="p-5 sm:p-8">
@@ -409,7 +401,7 @@ const ProjectDetail = () => {
           </WindowFrame>
         </motion.div>
 
-        {/* System Execution Log: Dev Mode Only */}
+        {/* System Execution Log — Dev Mode Only */}
         <AnimatePresence>
           {devMode && (
             <motion.div
